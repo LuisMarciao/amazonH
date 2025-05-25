@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Detalhes do Ponto Turístico</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section class="detalhes-container">
+    <button onclick="voltar()">← Voltar</button>
+    <div id="detalhes"></div>
+  </section>
+
+  <script>
+    function voltar() {
+      window.location.href = "index.html";
+    }
+
+    const ponto = JSON.parse(localStorage.getItem("pontoSelecionado"));
+    const detalhes = document.getElementById("detalhes");
+
+    if (ponto) {
+      detalhes.innerHTML = `
+        <h2>${ponto.nome}</h2>
+        <img src="${ponto.imagem}" alt="${ponto.nome}" />
+        <p>${ponto.descricao}</p>
+      `;
+    } else {
+      detalhes.innerHTML = "<p>Nenhuma informação encontrada.</p>";
+    }
+  </script>
+</body>
+</html>
